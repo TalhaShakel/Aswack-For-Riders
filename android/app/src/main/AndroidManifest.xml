@@ -1,4 +1,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Internet access (mandatory for network images, API calls, etc.) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network state (check if internet is available) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Location permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Background location access (for tracking rides in background; Android 10+) -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- Storage access (if your app needs to read/write files, e.g. caching images locally) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Phone state (optional, for pause/resume ride on calls or similar features) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Bluetooth (optional, if using Bluetooth devices like headphones, car connectivity) -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- Vibrate permission (for notifications/haptics) -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:label="aswack_ride"
         android:name="${applicationName}"
@@ -30,6 +58,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="YOUR KEY HERE"/> -->
+               
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
