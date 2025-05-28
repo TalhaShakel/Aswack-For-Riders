@@ -2,7 +2,7 @@ import 'package:aswack_ride/screens/User_side_app/HomeScreens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Driver side app/Screens/DriverDashboardScreen .dart';
+import '../Driver side app/Screens/DriverDashboardScreen.dart';
 
 class RoleSelection extends StatelessWidget {
   const RoleSelection({super.key});
@@ -66,7 +66,9 @@ class RoleSelection extends StatelessWidget {
             SizedBox(height: 20),
             gradientButton(
               onPressed: () {
-                Get.to(() => DriverDashboardScreen());
+                Get.to(() => DriverDashboardScreen(
+                    // driverName: 'James',
+                    ));
               },
               label: "Driver",
               icon: Icons.drive_eta,

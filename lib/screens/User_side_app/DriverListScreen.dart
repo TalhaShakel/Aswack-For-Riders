@@ -101,12 +101,13 @@ class _DriverListScreenState extends State<DriverListScreen>
           ElevatedButton(
             onPressed: () {
               Get.back();
-              Get.to(() => RideTrackingScreen(
-                    driverName: _selectedDriver!.name,
-                    vehicleDetails: _selectedDriver!.vehicleDetails,
-                    fare: _selectedDriver!.fare,
-                    paymentMethod: _paymentMethod.value,
-                    driverImageUrl: _selectedDriver!.imageUrl,
+              Get.to(() => DriverRideDetailsScreen(
+                    rideDetails: "asda",
+                    // driverName: _selectedDriver!.name,
+                    // vehicleDetails: _selectedDriver!.vehicleDetails,
+                    // fare: _selectedDriver!.fare,
+                    // paymentMethod: _paymentMethod.value,
+                    // driverImageUrl: _selectedDriver!.imageUrl,
                   ));
               // TODO: add ride start logic here
             },
