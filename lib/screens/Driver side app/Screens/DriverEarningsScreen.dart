@@ -68,6 +68,7 @@ class DriverEarningsScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
+                // ignore: deprecated_member_use
                 color: Constants.PRIMARY_COLOR.withOpacity(0.8),
               ),
             ),

@@ -43,13 +43,49 @@ class _DriverTripSummaryScreenState extends State<DriverTripSummaryScreen>
     super.dispose();
   }
 
+  Future<bool?> _showConfirmDialog() {
+    return showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm Payment'),
+          content: Text('Are you sure the payment is confirmed?'),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          actions: [
+            TextButton(
+              child: Text('Cancel', style: TextStyle(color: Colors.grey[700])),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Constants.PRIMARY_COLOR,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Text('Confirm', style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trip Summary'),
+        title: Text('Trip Summary', style: TextStyle(color: Colors.white)),
         backgroundColor: Constants.PRIMARY_COLOR,
         elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       backgroundColor: Colors.grey[100],
       body: FadeTransition(
@@ -66,42 +102,7 @@ class _DriverTripSummaryScreenState extends State<DriverTripSummaryScreen>
               Spacer(),
               ElevatedButton(
                 onPressed: () async {
-                  bool? confirmed = await showDialog<bool>(
-                    context: context,
-                    barrierDismissible: false, // force the user to choose
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Confirm Payment'),
-                        content: Text('Are you sure the payment is confirmed?'),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        actions: [
-                          TextButton(
-                            child: Text('Cancel',
-                                style: TextStyle(color: Colors.grey[700])),
-                            onPressed: () {
-                              Navigator.of(context).pop(false); // Return false
-                            },
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Constants.PRIMARY_COLOR,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            child: Text('Confirm',
-                                style: TextStyle(color: Colors.white)),
-                            onPressed: () {
-                              Navigator.of(context).pop(true); // Return true
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-
+                  final confirmed = await _showConfirmDialog();
                   if (confirmed == true) {
                     Get.snackbar(
                       "Payment Confirmed",

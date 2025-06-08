@@ -1,4 +1,5 @@
 import 'package:aswack_ride/screens/User_side_app/HomeScreens.dart';
+import 'package:aswack_ride/screens/User_side_app/UserLoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -57,7 +58,7 @@ class RoleSelection extends StatelessWidget {
           children: [
             gradientButton(
               onPressed: () {
-                Get.to(() => HomeScreen());
+                Get.to(() => UserLoginScreen());
               },
               label: "User",
               icon: Icons.person,
